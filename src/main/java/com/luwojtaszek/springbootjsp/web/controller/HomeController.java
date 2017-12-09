@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+    /*@GetMapping("/")
     public String getHomePage(Model model) {
         model.addAttribute("message", "Spring Boot application that uses JSP With Embedded Tomcat");
         return View.HOME.getPath();
-    }
+    }*/
 
 }

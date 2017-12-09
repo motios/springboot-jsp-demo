@@ -1,8 +1,11 @@
 package com.luwojtaszek.springbootjsp.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -14,6 +17,8 @@ import org.springframework.web.servlet.view.JstlView;
  * Created by lukasz on 27.08.2017.
  * With IntelliJ IDEA 15
  */
+
+//@EnableJpaRepositories("com.luwojtaszek.springbootjsp")
 @EnableWebMvc
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {

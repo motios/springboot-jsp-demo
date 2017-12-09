@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum View {
-    HOME(Constants.ROOT + "index");
+    /*HOME(Constants.ROOT + "index");
 
     private final String path;
 
@@ -21,5 +21,5 @@ public enum View {
 
         private Constants() {
         }
-    }
+    }*/
 }
