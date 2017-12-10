@@ -57,7 +57,7 @@ public class CustomersController {
 
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute CustomerDto model){
-
+        //tut problema, model is empty
         return "index";
     }
 
