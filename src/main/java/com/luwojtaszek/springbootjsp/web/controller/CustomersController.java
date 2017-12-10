@@ -50,7 +50,8 @@ public class CustomersController {
 
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.GET)
     public String customers(@PathVariable("id")long id, Model model){
-        CustomerDto customer = customerService.get(id).getCustomers().get(0);
+        CustomerDto customer = id>0 ? customerService.get(id).getCustomers().get(0): new CustomerDto();
+
         model.addAttribute("customer", customer);
         return  "customer";
     }
