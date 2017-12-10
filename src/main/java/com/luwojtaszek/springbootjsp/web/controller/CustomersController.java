@@ -57,15 +57,15 @@ public class CustomersController {
 
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute CustomerDto model){
-        //tut problema, model is empty
+        customerService.addUpdate(model);
         return "index";
     }
 
     private void addStaticData(){
 
-        customerService.addUpdate(new Customer("test1@gmail.com","first1","last1",25));
-        customerService.addUpdate(new Customer("test2@gmail.com","first2","last2",36));
-        customerService.addUpdate(new Customer("test3@gmail.com","first3","last3",47));
+        customerService.addUpdate(new CustomerDto("test1@gmail.com","first1","last1",25));
+        customerService.addUpdate(new CustomerDto("test2@gmail.com","first2","last2",36));
+        customerService.addUpdate(new CustomerDto("test3@gmail.com","first3","last3",47));
 
         customerService.setOrders(new OrderCust(LocalDateTime.now(), "laptop",150.90,1,1));
         customerService.setOrders(new OrderCust(LocalDateTime.now(), "mouse",15.29,1,1));

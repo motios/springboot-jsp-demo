@@ -8,11 +8,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 </head>
 <body>
 
 <div class="container">
-    <form action="${pageContext.servletContext.contextPath}/customers/${customer.customerId}" method="post">
+    <%--<form action="${pageContext.servletContext.contextPath}/customers/${customer.customerId}" method="post">--%>
+        <form:form  action="/customers/${customer.customerId}" method="post" modelAttribute="customer" >
         <div class="form-group" align="right">
             <button type="submit" class="btn btn-success" id="saveCustomer">Save</button>
             <button type="button" class="btn btn-danger" id="cancel">Cancel</button>
@@ -20,21 +22,23 @@
 
         <div class="form-group">
             <label for="customerName">First name:</label>
-            <input type="text" class="form-control" id="customerName" value="${customer.firstName}">
+            <form:input type="text" class="form-control" id="customerName" value="${customer.firstName}" path="firstName"/>
         </div>
         <div class="form-group">
             <label for="customerSecondName">Second name:</label>
-            <input type="text" class="form-control" id="customerSecondName" value="${customer.lastName}">
+            <form:input path="lastName" type="text" class="form-control" id="customerSecondName" value="${customer.lastName}" />
         </div>
         <div class="form-group">
             <label for="customerEmail">Email:</label>
-            <input type="text" class="form-control" id="customerEmail" value="${customer.email}">
+            <form:input path="email" type="text" class="form-control" id="customerEmail" value="${customer.email}" />
         </div>
         <div class="form-group">
             <label for="customerAge">Age:</label>
-            <input type="text" class="form-control" id="customerAge"  value="${customer.age}">
+            <form:input path="age" type="text" class="form-control" id="customerAge"  value="${customer.age}"/>
+            <form:input path="customerId" type="hidden" class="form-control" id="customerId"  />
+
         </div>
-    </form>
+        </form:form>
     <div align = "right">
         <button type="button" class="btn btn-warning"  id="AddNewOrder">Add Order</button>
     </div>

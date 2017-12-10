@@ -23,8 +23,9 @@ public class CustomerService implements ICustomer {
     private List<Customer> customers;
 
     @Override
-    public ResponseResolve addUpdate(Customer customer){
+    public ResponseResolve addUpdate(CustomerDto customerDto){
         ResponseResolve responseResolve;
+        Customer customer = customerDtoToDao(customerDto);
         try {
             responseResolve= CustomerHelperValidator.customerValidation(customer);
             //check if all is ok(no description and status 200)
@@ -43,8 +44,9 @@ public class CustomerService implements ICustomer {
     }
 
     @Override
-    public ResponseResolve delete(Customer customer) {
+    public ResponseResolve delete(CustomerDto customerDto) {
         try {
+            Customer customer = customerDtoToDao(customerDto);
             customerRepository.delete(customer);
             return new ResponseResolve(HttpStatus.OK.value(),"");
         }
@@ -110,6 +112,16 @@ public class CustomerService implements ICustomer {
 
     private int getOrdersCountByCustomerId(long id){
         return orderService.getOrdersCountByCustomerId(id);
+    }
+
+    private Customer customerDtoToDao(CustomerDto customerDto){
+        Customer customer = new Customer();
+        customer.setLastName(customerDto.getLastName());
+        customer.setFirstName(customerDto.getFirstName());
+        customer.setEmail(customerDto.getEmail());
+        customer.setAge(customerDto.getAge());
+        customer.setCustomerId(customerDto.getCustomerId());
+        return customer;
     }
 }
 

@@ -13,6 +13,13 @@ public class CustomerDto {
     public CustomerDto() {
     }
 
+    public CustomerDto(String email, String firstName, String lastName, int age) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
+
     public CustomerDto(String email, String fullName, int numberOfOrders, String firstName, String lastName, int age, long id) {
         this.email = email;
         this.fullName = fullName;
