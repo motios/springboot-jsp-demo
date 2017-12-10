@@ -13,7 +13,7 @@
 
 <div class="container">
     <div align = "right">
-        <button type="button" class="btn btn-warning"  id="AddNewCustomer">Add customer</button>
+        <button type="button" class="btn btn-warning"  customerId="AddNewCustomer">Add customer</button>
     </div>
 
     <table class="table table-hover">
@@ -34,8 +34,8 @@
                 <td>${item.fullName}</td>
                 <td>${item.numberOfOrders}</td>
                 <%--<td>${item.fullName}</td>
-                <td>${item.numberOfOrders}</td>
-                <td><a href = "customer.html">Edit</a></td>--%>
+                <td>${item.numberOfOrders}</td>--%>
+                <td><a href = ${item.customerId}>Edit</a></td>
             </tr>
         </c:forEach>
 

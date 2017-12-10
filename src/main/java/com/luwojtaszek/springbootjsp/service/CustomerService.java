@@ -17,9 +17,9 @@ import java.util.List;
 @Service
 public class CustomerService implements ICustomer {
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
     @Autowired
-    OrderService orderService;
+    private OrderService orderService;
     private List<Customer> customers;
 
     @Override
@@ -86,14 +86,22 @@ public class CustomerService implements ICustomer {
     private List<CustomerDto> customersToDto(List<Customer> customers){
         List<CustomerDto> customerDtoList= new ArrayList<>();
         for (Customer customer: customers) {
-            customerDtoList.add(new CustomerDto(customer.getEmail(),setFullname(customer),getOrdersCountByCustomerId(customer.getCustomerId()),customer.getCustomerId()));
+            CustomerDto customerDto=new CustomerDto();
+            customerDto.setAge(customer.getAge());
+            customerDto.setEmail(customer.getEmail());
+            customerDto.setNumberOfOrders(getOrdersCountByCustomerId(customer.getCustomerId()));
+            customerDto.setFirstName(customer.getFirstName());
+            customerDto.setLastName(customer.getLastName());
+            customerDto.setCustomerId(customer.getCustomerId());
+            customerDtoList.add(customerDto);
+            //customerDtoList.add(new CustomerDto(customer.getEmail(),,getOrdersCountByCustomerId(customer.getCustomerId()),customer.getFirstName(),customer.getLastName(),customer.getAge(),customer.getCustomerId()));
         }
         return customerDtoList;
     }
 
     private String setFullname(Customer customer){
         StringBuilder stringBuilder = new StringBuilder();
-        return stringBuilder.append(customer.getFirstName()).append(" ").append(customer.getLastname()).toString();
+        return stringBuilder.append(customer.getFirstName()).append(" ").append(customer.getLastName()).toString();
     }
 
     public List<OrderCust> getAllOrders() {

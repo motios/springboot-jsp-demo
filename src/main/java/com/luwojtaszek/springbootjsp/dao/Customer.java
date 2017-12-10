@@ -15,17 +15,17 @@ public class Customer implements IEntity {
     private  long customerId;
     private String email;
     private String firstName;
-    private String lastname;
+    private String lastName;
     private int age;
 
     public Customer(){
         init();
     };
 
-    public Customer(String email, String firstName, String lastname, int age) {
+    public Customer(String email, String firstName, String lastName, int age) {
         this.email = email;
         this.firstName = firstName;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.age = age;
     }
 
@@ -33,7 +33,7 @@ public class Customer implements IEntity {
     public void init() {
         setEmail("");
         setFirstName("");
-        setLastname("");
+        setLastName("");
         setAge(CustomerHelperValidator.AGE_DEFAULT);
     }
 
@@ -61,12 +61,12 @@ public class Customer implements IEntity {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public int getAge() {
@@ -87,14 +87,14 @@ public class Customer implements IEntity {
         if (age != customer.age) return false;
         if (!email.equals(customer.email)) return false;
         if (!firstName.equals(customer.firstName)) return false;
-        return lastname.equals(customer.lastname);
+        return lastName.equals(customer.lastName);
     }
 
     @Override
     public int hashCode() {
         int result = email.hashCode();
         result = 31 * result + firstName.hashCode();
-        result = 31 * result + lastname.hashCode();
+        result = 31 * result + lastName.hashCode();
         result = 31 * result + age;
         return result;
     }
@@ -105,7 +105,7 @@ public class Customer implements IEntity {
         sb.append("customerId=").append(customerId);
         sb.append(", email='").append(email).append('\'');
         sb.append(", firstName='").append(firstName).append('\'');
-        sb.append(", lastname='").append(lastname).append('\'');
+        sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", age=").append(age);
         sb.append('}');
         return sb.toString();

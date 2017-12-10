@@ -28,7 +28,7 @@ public class CustomerHelperValidator {
             message += ageValidate(customer.getAge())==true ? message : String.format(MESSAGE_ERROR,AGE);
             message += emailValidate(customer.getEmail())==true ? message : String.format(MESSAGE_ERROR,EMAIL);
             message += nameValidate(customer.getFirstName())==true ? message : String.format(MESSAGE_ERROR,FIRST_NAME);
-            message += nameValidate(customer.getLastname())==true ? message : String.format(MESSAGE_ERROR,LAST_NAME);
+            message += nameValidate(customer.getLastName())==true ? message : String.format(MESSAGE_ERROR,LAST_NAME);
             responseResolve = message.equals("") ? new ResponseResolve(HttpStatus.OK.value(),"") :
                     new ResponseResolve(HttpStatus.NOT_FOUND.value(),message);
 
