@@ -9,7 +9,6 @@
     <packaging>jar</packaging>
 
     <name>springbootjsp</name>
-    <description>An example of Spring Boot application that uses an embedded tomcat and jsp.</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

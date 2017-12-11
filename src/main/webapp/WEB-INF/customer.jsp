@@ -17,6 +17,7 @@
         <form:form  action="/customers/${customer.customerId}" method="post" modelAttribute="customer" >
         <div class="form-group" align="right">
             <button type="submit" class="btn btn-success" id="saveCustomer">Save</button>
+            <%--<a href = "/customers" /a>--%>
             <button type="button" class="btn btn-danger" id="cancel">Cancel</button>
         </div>
 
@@ -40,6 +41,7 @@
         </div>
         </form:form>
     <div align = "right">
+        <a href = /orders/0 /a>
         <button type="button" class="btn btn-warning"  id="AddNewOrder">Add Order</button>
     </div>
 
@@ -57,10 +59,10 @@
 
         <c:forEach items="${orders}" var="order">
             <tr>
-                <td>${order.date}</td>
+                <td>${order.orderDate}</td>
                 <td>${order.productDescription}</td>
                 <td>${order.totalPrice}</td>
-                <td><a href = "order.jsp">link</a></td>
+                <td><a href = "/orders/${order.orderId}">Edit</a></td>
             </tr>
         </c:forEach>
 

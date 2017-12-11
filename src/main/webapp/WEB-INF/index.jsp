@@ -13,7 +13,7 @@
 
 <div class="container">
     <div align = "right">
-        <a href = 0 /a>
+        <a href = "/customers/0" /a>
         <button type="button" class="btn btn-warning"  customerId="AddNewCustomer">Add customer</button>
     </div>
 
