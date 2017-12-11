@@ -66,7 +66,7 @@
                 <td>${order.orderDate}</td>
                 <td>${order.productDescription}</td>
                 <td>${order.totalPrice}</td>
-                <td><a href = "/orders/${order.orderId}">Edit</a></td>
+                <td><a href = "/orders/${order.orderId}/customer/${customer.customerId}">Edit</a></td>
             </tr>
         </c:forEach>
 
