@@ -4,6 +4,7 @@ package com.luwojtaszek.springbootjsp.web.controller;
 import com.luwojtaszek.springbootjsp.dao.Customer;
 import com.luwojtaszek.springbootjsp.dao.OrderCust;
 import com.luwojtaszek.springbootjsp.dto.CustomerDto;
+import com.luwojtaszek.springbootjsp.dto.OrderDto;
 import com.luwojtaszek.springbootjsp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,16 +35,10 @@ public class CustomersController {
             addStaticData();
         }
 
-        //Customer cust = null;
-        /*for (Customer customer: customerService.getAll().getCustomers()){
-            model.put(customer.getFirstName()+" " +customer.getLastName(), customer);
-            cust=customer;
-        }*/
         List<CustomerDto> custList = customerService.getAll().getCustomers();
-
-        List<OrderCust> orders = customerService.getAllOrders();
+        List<OrderDto> orders = customerService.getAllOrders();
         model.addAttribute("list",custList);
-        //model.put("name", "Moti");
+
         return  "index";
 
     }
@@ -51,30 +46,38 @@ public class CustomersController {
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.GET)
     public String customers(@PathVariable("id")long id, Model model){
         CustomerDto customer = id>0 ? customerService.get(id).getCustomers().get(0): new CustomerDto();
-
+        List<OrderDto> orders = customerService.getOrdersByCustomerId(id);
         model.addAttribute("customer", customer);
+        model.addAttribute("orders", orders);
         return  "customer";
     }
 
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute CustomerDto model){
         customerService.addUpdate(model);
-        return "index";
+        return "customers";
+    }
+
+    @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
+    public String orders(@PathVariable("id")long id, Model model) {
+        OrderDto orderDto = id>0 ? customerService.getOrderByOrderId(id).getOrders().get(0): new OrderDto();
+        model.addAttribute("order",orderDto);
+        return "order";
+
     }
 
     private void addStaticData(){
-
         customerService.addUpdate(new CustomerDto("test1@gmail.com","first1","last1",25));
         customerService.addUpdate(new CustomerDto("test2@gmail.com","first2","last2",36));
         customerService.addUpdate(new CustomerDto("test3@gmail.com","first3","last3",47));
 
-        customerService.setOrders(new OrderCust(LocalDateTime.now(), "laptop",150.90,1,1));
-        customerService.setOrders(new OrderCust(LocalDateTime.now(), "mouse",15.29,1,1));
-        customerService.setOrders(new OrderCust(LocalDateTime.now(), "headset",5.87,2,1));
-
-        customerService.setOrders(new OrderCust(LocalDateTime.now(), "desktop",159.29,1,2));
-        customerService.setOrders(new OrderCust(LocalDateTime.now(), "monitor",115.45,1,2));
-
-        customerService.setOrders(new OrderCust(LocalDateTime.now(), "mobile phone",890.29,1,3));
+        customerService.setOrders(new OrderDto(LocalDateTime.now(), "laptop",150.90,1,1));
+        customerService.setOrders(new OrderDto(LocalDateTime.now(), "mouse",15.29,1,1));
+        customerService.setOrders(new OrderDto(LocalDateTime.now(), "headset",5.87,2,1));
+        customerService.setOrders(new OrderDto(LocalDateTime.now(), "desktop",159.29,1,2));
+        customerService.setOrders(new OrderDto(LocalDateTime.now(), "monitor",115.45,1,2));
+        customerService.setOrders(new OrderDto(LocalDateTime.now(), "mobile phone",890.29,1,3));
     }
+
+
 }

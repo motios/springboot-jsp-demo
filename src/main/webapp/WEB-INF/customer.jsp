@@ -55,14 +55,14 @@
         </thead>
         <tbody>
 
-       <%-- <c:forEach items="${listOrder}" var="item">
+        <c:forEach items="${orders}" var="order">
             <tr>
-                <td>${item.date}</td>
-                <td>${item.description}</td>
-                <td>${item.totalPrice}</td>
+                <td>${order.date}</td>
+                <td>${order.productDescription}</td>
+                <td>${order.totalPrice}</td>
                 <td><a href = "order.jsp">link</a></td>
             </tr>
-        </c:forEach>--%>
+        </c:forEach>
 
         </tbody>
     </table>

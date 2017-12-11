@@ -36,7 +36,7 @@
                 <td>${item.numberOfOrders}</td>
                 <%--<td>${item.fullName}</td>
                 <td>${item.numberOfOrders}</td>--%>
-                <td><a href = ${item.customerId}>Edit</a></td>
+                <td><a href = /customers/${item.customerId}>Edit</a></td>
             </tr>
         </c:forEach>
 

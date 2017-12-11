@@ -12,28 +12,31 @@
 <body>
 
 <div class="container">
-
+<form:form  action="/orders/${order.orderId}" method="post" modelAttribute="order" >
     <div class="form-group" align="right">
-        <button type="button" class="btn btn-success"  customerId="saveOrder">Save</button>
-        <button type="button" class="btn btn-danger"  customerId="cancelOrder">Cancel</button>
+        <button type="submit" class="btn btn-success"  id="saveOrder">Save</button>
+        <button type="button" class="btn btn-danger"  id="cancelOrder">Cancel</button>
     </div>
-
+    <input type="text" value= "${order}" size="200" >
     <div class="form-group">
         <label for="orderDate">Date:</label>
-        <input type="text" class="form-control" customerId="orderDate" value="${order.date}">
+
+        <form:input type="text" class="form-control" id="orderDate" value="${order.date}" path="date"/>
+
     </div>
     <div class="form-group">
-        <label for="orderDescription">Description:</label>
-        <input type="text" class="form-control" customerId="orderDescription" value="${order.description}">
+        <label for="orderProductDescription">Description:</label>
+        <form:input type="text" class="form-control" id="orderProductDescription" value="${order.productDescription}" path="productDescription"/>
     </div>
     <div class="form-group">
         <label for="orderPrice">Price:</label>
-        <input type="text" class="form-control" customerId="orderPrice" value="${order.price}">
+        <form:input type="text" class="form-control" id="orderPrice" value="${order.price}" path="price"/>
     </div>
     <div class="form-group">
-        <label for="orderQty">Qty:</label>
-        <input type="text" class="form-control" customerId="orderQty"  value="${order.qty}">
+        <label for="orderQuantity">Quantity:</label>
+        <form:input type="text" class="form-control" id="orderQuantity"  value="${order.quantity}" path="quantity" />
     </div>
+</form:form>
 </div>
 </body>
 </html>

@@ -6,11 +6,13 @@ import com.luwojtaszek.springbootjsp.Utils.ResponseResolve;
 import com.luwojtaszek.springbootjsp.dao.Customer;
 import com.luwojtaszek.springbootjsp.dao.OrderCust;
 import com.luwojtaszek.springbootjsp.dto.CustomerDto;
+import com.luwojtaszek.springbootjsp.dto.OrderDto;
 import com.luwojtaszek.springbootjsp.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,7 +83,7 @@ public class CustomerService implements ICustomer {
         return responseResolve;
     }
 
-    public ResponseResolve setOrders(OrderCust order){
+    public ResponseResolve setOrders(OrderDto order){
         return orderService.addUpdate(order);
     }
 
@@ -106,7 +108,7 @@ public class CustomerService implements ICustomer {
         return stringBuilder.append(customer.getFirstName()).append(" ").append(customer.getLastName()).toString();
     }
 
-    public List<OrderCust> getAllOrders() {
+    public List<OrderDto> getAllOrders() {
         return orderService.getAll().getOrders();
     }
 
@@ -122,6 +124,15 @@ public class CustomerService implements ICustomer {
         customer.setAge(customerDto.getAge());
         customer.setCustomerId(customerDto.getCustomerId());
         return customer;
+    }
+
+
+    public List<OrderDto> getOrdersByCustomerId(long id){
+        return orderService.getOrdersByCustomerId(id);
+    }
+
+    public ResponseResolve getOrderByOrderId(long id){
+        return orderService.get(id);
     }
 }
 

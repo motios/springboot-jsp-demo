@@ -4,6 +4,7 @@ package com.luwojtaszek.springbootjsp.Utils;
 
 import com.luwojtaszek.springbootjsp.dao.OrderCust;
 import com.luwojtaszek.springbootjsp.dto.CustomerDto;
+import com.luwojtaszek.springbootjsp.dto.OrderDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class ResponseResolve {
     private int code;
     private String descroption;
     private List<CustomerDto> customers;
-    private List<OrderCust> orders;
+    private List<OrderDto> orders;
 
     public ResponseResolve() {
         init();
@@ -53,11 +54,11 @@ public class ResponseResolve {
         this.customers = customers;
     }
 
-    public List<OrderCust> getOrders() {
+    public List<OrderDto> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<OrderCust> orders) {
+    public void setOrders(List<OrderDto> orders) {
         this.orders = orders;
     }
 }

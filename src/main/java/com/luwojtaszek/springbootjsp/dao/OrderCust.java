@@ -10,10 +10,7 @@ public class OrderCust implements IEntity{
     @GeneratedValue
     private long orderId;
     private LocalDateTime date;
-
-
     private long customerId;
-
     private String productDescroption;
     private double price;
     private int quantity;
