@@ -7,6 +7,7 @@ import com.luwojtaszek.springbootjsp.dto.CustomerDto;
 import com.luwojtaszek.springbootjsp.dto.OrderDto;
 import com.luwojtaszek.springbootjsp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.jaxb.SpringDataJaxb;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -64,6 +65,12 @@ public class CustomersController {
         model.addAttribute("order",orderDto);
         return "order";
 
+    }
+
+    @RequestMapping(value = "/orders/{id}", method = RequestMethod.POST)
+    public String update(@ModelAttribute OrderDto model){
+        customerService.setOrders(model);
+        return "customers";
     }
 
     private void addStaticData(){
