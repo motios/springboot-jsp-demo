@@ -1,9 +1,6 @@
 package com.momah.springbootjsp.dao;
 
-
-
 import com.momah.springbootjsp.Utils.CustomerHelperValidator;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

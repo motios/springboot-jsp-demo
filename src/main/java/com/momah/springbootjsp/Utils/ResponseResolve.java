@@ -2,10 +2,8 @@ package com.momah.springbootjsp.Utils;
 
 //this class for show results in view
 
-
 import com.momah.springbootjsp.dto.CustomerDto;
 import com.momah.springbootjsp.dto.OrderDto;
-
 import java.util.ArrayList;
 import java.util.List;
 

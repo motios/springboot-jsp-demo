@@ -15,6 +15,12 @@ public class OrderDto {
 
 
     public OrderDto() {
+       setOrderDate(LocalDateTime.now().toString());
+    }
+
+    public OrderDto(long customerId) {
+        this();
+        this.customerId = customerId;
     }
 
     public OrderDto(String orderDate, String productDescription, double pruductPrice, int pruductQuantity, long customerId) {

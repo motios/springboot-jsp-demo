@@ -1,5 +1,6 @@
 package com.momah.springbootjsp.web.controller;
 
+import com.momah.springbootjsp.dto.CustomerDto;
 import com.momah.springbootjsp.dto.OrderDto;
 import com.momah.springbootjsp.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +17,23 @@ public class OrdersController {
     @Autowired
     private OrderService orderService;
 
-    @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
-    public String get(@PathVariable("id")long id, Model model) {
-        OrderDto orderDto = id>0 ? orderService.get(id).getOrders().get(0): new OrderDto();
-        model.addAttribute("order", orderDto);
-        return "order";
-
+    //get order by orderid, oustomerid, if is new order => set customerId
+    @RequestMapping(value = "/orders/{id}/customer/{cid}", method = RequestMethod.GET)
+    public String getOrder(@PathVariable("id")long id,@PathVariable("cid")long cid, Model model) {
+        if(cid>0) {
+            OrderDto orderDto = id > 0 ? orderService.get(id).getOrders().get(0) : new OrderDto(cid);
+            model.addAttribute("order", orderDto);
+            return "order";
+        }
+        else{
+            return "/customers";
+        }
     }
 
+    //update / add order
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute OrderDto model){
-        orderService.addUpdate(model);
-        return "customers";
+           orderService.addUpdate(model);
+        return "redirect:/customers/"+model.getCustomerId();
     }
 }

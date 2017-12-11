@@ -77,7 +77,7 @@ public class OrderService extends AbstractService implements IOrder {
     //orders by customer ID
     public ResponseResolve getOrdersByCustomerId(long id){
         ResponseResolve responseResolve = OKResponseResolve();
-        responseResolve.setOrders(orderCust2OrderDto(orderRepository.getOrderByCustomerId(id)));
+                responseResolve.setOrders(orderCust2OrderDto(orderRepository.getOrderByCustomerId(id)));
         return responseResolve;
     }
 

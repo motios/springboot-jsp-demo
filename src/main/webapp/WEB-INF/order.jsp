@@ -13,11 +13,9 @@
     <body>
         <div class="container">
             <form:form  action="/orders/${order.orderId}" method="post" modelAttribute="order" >
-                <%--<form:form  action="action=${pageContext.servletContext.contextPath}/orders/${order.orderId}" method="post" modelAttribute="customer" >--%>
                 <div class="form-group" align="right">
                     <button type="submit" class="btn btn-success"  id="saveOrder">Save</button>
-                    <a href = "/orders" /a>
-                    <button type="button" class="btn btn-danger"  id="cancelOrder">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="history.back()" id="cancelOrder">Cancel</button>
                 </div>
                 <div class="form-group">
                     <label for="orderDate">Date:</label>

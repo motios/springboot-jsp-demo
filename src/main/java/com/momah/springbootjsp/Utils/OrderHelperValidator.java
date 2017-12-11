@@ -1,9 +1,7 @@
 package com.momah.springbootjsp.Utils;
 
-
 import com.momah.springbootjsp.dao.OrderCust;
 import org.springframework.http.HttpStatus;
-
 import java.time.LocalDateTime;
 
 public class OrderHelperValidator {
@@ -32,6 +30,7 @@ public class OrderHelperValidator {
 
     }
 
+    //need to check time to can be converted from String to LocalDateTime
     private static boolean dateValidate(LocalDateTime localDateTime){
         return localDateTime !=null ;
     }

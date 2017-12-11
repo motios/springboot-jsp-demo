@@ -17,8 +17,8 @@
         <form:form  action="/customers/${customer.customerId}" method="post" modelAttribute="customer" >
         <div class="form-group" align="right">
             <button type="submit" class="btn btn-success" id="saveCustomer">Save</button>
-            <%--<a href = "/customers" /a>--%>
-            <button type="button" class="btn btn-danger" id="cancel">Cancel</button>
+            <button type="button" class="btn btn-danger" onclick="history.back()" id="cancel">Cancel</button>
+
         </div>
 
         <div class="form-group">
@@ -41,8 +41,12 @@
         </div>
         </form:form>
     <div align = "right">
-        <a href = /orders/0 /a>
-        <button type="button" class="btn btn-warning"  id="AddNewOrder">Add Order</button>
+        <%--<a href = /orders/0/customer/${customer.customerId}>Add Order</a>--%>
+           <%-- <button type="button" class="btn btn-warning"  id="AddNewOrder">Add Order</button>--%>
+        <a href = /customers /a>
+        <button type="button" class="btn btn-warning"  id="AddNewOrder">Home</button>
+        <a href = /orders/0/customer/${customer.customerId} /a>
+            <button type="button" class="btn btn-success"  id="AddNewOrder">Add Order</button>
     </div>
 
 
