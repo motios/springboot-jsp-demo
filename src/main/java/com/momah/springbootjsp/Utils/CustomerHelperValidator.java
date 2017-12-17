@@ -15,7 +15,7 @@ public class CustomerHelperValidator {
     public static final String FIRST_NAME = "first name ";
     public static final String AGE = "age ";
     public static final String EMAIL = "email ";
-    public static  String MESSAGE_ERROR = "%svalue does not meet the requirements.\r\n";
+    public static  String MESSAGE_ERROR = "%svalue does not meet the requirements\r";
     public static final String EMAIL_MESSAGE_ERROR = "";
 
     private static final Object locker = new Object();

@@ -7,6 +7,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        String.prototype.replaceAll = function(search, replacement) {
+            var target = this;
+            return target.split(search).join(replacement);
+        };
+        function showAlert() {
+            var str = "?responseMessage="
+            var url = window.location.href
+            if(url.indexOf(str)>-1 && url.length > url.indexOf(str)+str.length){
+                var messageStr= url.substring(url.indexOf(str)+str.length);
+                messageStr = messageStr.replaceAll("+"," ");
+                messageStr = messageStr.replaceAll("%0D","\r");
+                alert(messageStr);
+            }
+        }
+    </script>
+    <script>
+
+        window.onload = showAlert();
+    </script>
+
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 </head>

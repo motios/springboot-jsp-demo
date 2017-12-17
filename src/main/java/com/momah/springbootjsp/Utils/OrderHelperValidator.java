@@ -14,16 +14,16 @@ public class OrderHelperValidator {
     public static final String DATE = "date ";
     public static final String CUSTOMER_ID = "customer_id ";
     public static final String PRICE = "PRICE ";
-    public static  String MESSAGE_ERROR = "%s value does not meet the requirements.\r\n";
+    public static  String MESSAGE_ERROR = "%svalue does not meet the requirements\r";
 
 
     public static ResponseResolve orderValidation(OrderCust order){
         String message = "";
         ResponseResolve responseResolve;
-        message +=dateValidate(order.getDate())==true ? message : String.format(MESSAGE_ERROR,DATE);
-        message +=customerIdValidate(order.getCustomerId())==true ? message : String.format(MESSAGE_ERROR,CUSTOMER_ID);
-        message +=quantityValidate(order.getQuantity())==true ? message : String.format(MESSAGE_ERROR,QUANTITY);
-        message +=priceValidate(order.getPrice())==true ? message : String.format(MESSAGE_ERROR,PRICE);
+        message +=dateValidate(order.getDate())==true ? "" : String.format(MESSAGE_ERROR,DATE);
+        message +=customerIdValidate(order.getCustomerId())==true ? "" : String.format(MESSAGE_ERROR,CUSTOMER_ID);
+        message +=quantityValidate(order.getQuantity())==true ? "" : String.format(MESSAGE_ERROR,QUANTITY);
+        message +=priceValidate(order.getPrice())==true ? "" : String.format(MESSAGE_ERROR,PRICE);
         responseResolve = message.equals("") ? new ResponseResolve(HttpStatus.OK.value(),"") :
                 new ResponseResolve(HttpStatus.BAD_REQUEST.value(),message);
         return responseResolve;

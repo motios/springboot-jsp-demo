@@ -1,5 +1,6 @@
 package com.momah.springbootjsp.web.controller;
 
+import com.momah.springbootjsp.Utils.ResponseResolve;
 import com.momah.springbootjsp.dto.CustomerDto;
 import com.momah.springbootjsp.dto.OrderDto;
 import com.momah.springbootjsp.service.OrderService;
@@ -32,9 +33,9 @@ public class OrdersController {
 
     //update / add order
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.POST)
-    public String update(@ModelAttribute OrderDto model){
-           orderService.addUpdate(model);
-
-        return "redirect:/customers/"+model.getCustomerId();
+    public String update(@ModelAttribute OrderDto modelDto,Model model ){
+        ResponseResolve responseResolve = orderService.addUpdate(modelDto);
+        model.addAttribute("responseMessage",responseResolve.getDescroption());
+        return "redirect:/customers/"+modelDto.getCustomerId();
     }
 }
