@@ -1,10 +1,12 @@
 package com.momah.springbootjsp.web.controller;
 
 
+import com.momah.springbootjsp.Utils.ResponseResolve;
 import com.momah.springbootjsp.dto.CustomerDto;
 
 import com.momah.springbootjsp.dto.OrderDto;
 import com.momah.springbootjsp.service.CustomerService;
+import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,8 +47,9 @@ public class CustomersController {
 
     //update/add customer
     @RequestMapping(value = "/customers/{id}", method = RequestMethod.POST)
-    public String update(@ModelAttribute CustomerDto model){
-        customerService.addUpdate(model);
+    public String update(@ModelAttribute CustomerDto modelDto, Model model ){
+        ResponseResolve responseResolve =customerService.addUpdate(modelDto);
+        model.addAttribute("responseMessage",responseResolve.getDescroption());
         return "redirect:/customers";
     }
 

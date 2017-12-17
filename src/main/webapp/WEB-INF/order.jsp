@@ -7,11 +7,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 </head>
     <body>
         <div class="container">
+            <%--<c:if test="condition">
+                <c:choose>
+                    <c:when test="${responseMessage.descroption.length()>0}">
+                        alert(${responseMessage.descroption})
+                    </c:when>
+                </c:choose>
+            </c:if>--%>
+
             <form:form  action="/orders/${order.orderId}" method="post" modelAttribute="order" >
                 <div class="form-group" align="right">
                     <button type="submit" class="btn btn-success"  id="saveOrder">Save</button>

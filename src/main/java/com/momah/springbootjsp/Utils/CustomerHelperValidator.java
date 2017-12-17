@@ -15,7 +15,7 @@ public class CustomerHelperValidator {
     public static final String FIRST_NAME = "first name ";
     public static final String AGE = "age ";
     public static final String EMAIL = "email ";
-    public static  String MESSAGE_ERROR = "%s value does not meet the requirements.\r\n";
+    public static  String MESSAGE_ERROR = "%svalue does not meet the requirements.\r\n";
     public static final String EMAIL_MESSAGE_ERROR = "";
 
     private static final Object locker = new Object();
@@ -24,10 +24,10 @@ public class CustomerHelperValidator {
         String message = "";
         ResponseResolve responseResolve;
         synchronized (locker) {
-            message += ageValidate(customer.getAge())==true ? message : String.format(MESSAGE_ERROR,AGE);
-            message += emailValidate(customer.getEmail())==true ? message : String.format(MESSAGE_ERROR,EMAIL);
-            message += nameValidate(customer.getFirstName())==true ? message : String.format(MESSAGE_ERROR,FIRST_NAME);
-            message += nameValidate(customer.getLastName())==true ? message : String.format(MESSAGE_ERROR,LAST_NAME);
+            message += ageValidate(customer.getAge())==true ? "" : String.format(MESSAGE_ERROR,AGE);
+            message += emailValidate(customer.getEmail())==true ? "" : String.format(MESSAGE_ERROR,EMAIL);
+            message += nameValidate(customer.getFirstName())==true ? "" : String.format(MESSAGE_ERROR,FIRST_NAME);
+            message += nameValidate(customer.getLastName())==true ? "" : String.format(MESSAGE_ERROR,LAST_NAME);
             responseResolve = message.equals("") ? new ResponseResolve(HttpStatus.OK.value(),"") :
                     new ResponseResolve(HttpStatus.NOT_FOUND.value(),message);
 

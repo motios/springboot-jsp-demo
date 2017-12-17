@@ -34,6 +34,7 @@ public class OrdersController {
     @RequestMapping(value = "/orders/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute OrderDto model){
            orderService.addUpdate(model);
+
         return "redirect:/customers/"+model.getCustomerId();
     }
 }
